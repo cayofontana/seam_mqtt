@@ -21,7 +21,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
-    private final String ENDERECO_MTQQ = "tcp://tailor.cloudmqtt.com:10011";
+    private final String ENDERECO_MQTT = "tcp://tailor.cloudmqtt.com:10011";
     private final String USUARIO = "ajfyskve";
     private final String SENHA = "S3SkYh43226v";
     private final String topico = "SEAM_SIRENE_01";
@@ -33,14 +33,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String idClienteMqtt = MqttClient.generateClientId();
-        clienteMqtt = new MqttAndroidClient(getApplicationContext(), ENDERECO_MTQQ, idClienteMqtt);
+        clienteMqtt = new MqttAndroidClient(getApplicationContext(), ENDERECO_MQTT, idClienteMqtt);
         MqttConnectOptions opcoesConexao = new MqttConnectOptions();
         opcoesConexao.setUserName(USUARIO);
         opcoesConexao.setPassword(SENHA.toCharArray());
 
         try {
-            IMqttToken tokenMtqq = clienteMqtt.connect(opcoesConexao);
-            tokenMtqq.setActionCallback(new IMqttActionListener() {
+            IMqttToken tokenMqtt = clienteMqtt.connect(opcoesConexao);
+            tokenMqtt.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     Toast.makeText(MainActivity.this, "conectado", Toast.LENGTH_LONG).show();
