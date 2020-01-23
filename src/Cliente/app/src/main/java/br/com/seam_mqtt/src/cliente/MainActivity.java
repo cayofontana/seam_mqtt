@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 Toast.makeText(MainActivity.this, new String(message.getPayload()), Toast.LENGTH_LONG).show();
+                registrarCallBack(new String(message.getPayload()), getApplicationContext());
                 final Vibrator vibrador = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                     vibrador.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                 else
                     vibrador.vibrate(500);
-                registrarCallBack(new String(message.getPayload()), getApplicationContext());
             }
 
             @Override
