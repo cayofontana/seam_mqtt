@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -19,6 +21,11 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
+import java.util.Calendar;
+import java.util.Random;
+
+import br.com.seam_mqtt.src.cliente.infraestrutura.Util;
 
 public class MainActivity extends AppCompatActivity {
     private final String ENDERECO_MQTT = "tcp://tailor.cloudmqtt.com:10011";
@@ -70,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     vibrador.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                 else
                     vibrador.vibrate(500);
+                registrarCallBack(new String(message.getPayload()), getApplicationContext());
             }
 
             @Override
@@ -85,5 +93,15 @@ public class MainActivity extends AppCompatActivity {
         catch (MqttException excecao) {
             excecao.printStackTrace();
         }
+    }
+
+    private void registrarCallBack(String mensagem, Context contexto) {//(Notificacao notificacao, Context contexto) {
+        Intent intent = new Intent();
+        int id = new Random().nextInt(1000);
+        intent.putExtra("seam", id);
+        intent.setAction(".MainActivity");
+        sendBroadcast(intent);
+
+        Util.notificar(contexto, id, "SEAM ", mensagem + "Alerta em " + Calendar.getInstance().getTime().toString());
     }
 }
