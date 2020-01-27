@@ -19,23 +19,9 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name="org.eclipse.paho.android.service.MqttService" >
-        </service>
-
-        <receiver android:name=".servico.MqttWorker">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="android.intent.action.PACKAGE_INSTALL" />
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <data android:scheme="package"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
