@@ -20,31 +20,26 @@ import br.com.seam_mqtt.src.cliente.R;
 public class Util {
     private Util() {}
 
-    public static String alterarFormatoData(String strData, String formato)
-    {
+    public static String alterarFormatoData(String strData, String formato) {
         String novaStrData = null;
         SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date data = null;
-        try
-        {
+        try {
             data = formatoData.parse(strData);
             formatoData.applyPattern("dd/MM/yyyy hh:mm:ss");
             novaStrData = formatoData.format(data);
         }
-        catch (ParseException excecao)
-        {
+        catch (ParseException excecao) {
             excecao.printStackTrace();
         }
         return (novaStrData);
     }
 
-    public static void notificar(Context contexto, int id, String titulo, String mensagem)
-    {
+    public static void notificar(Context contexto, int id, String titulo, String mensagem) {
         NotificationManager gerenteNotificacao = (NotificationManager) contexto.getSystemService(Context.NOTIFICATION_SERVICE);
 
         String CHANNEL_ID = "seam_01";
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
-        {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             CharSequence nome = "seam";
             String descricao = "Canal App SEAM";
             int importancia = NotificationManager.IMPORTANCE_HIGH;
@@ -75,8 +70,7 @@ public class Util {
         gerenteNotificacao.notify(id, construtor.build());
     }
 
-    public static void cancelarNotificacao(Context contexto, int id)
-    {
+    public static void cancelarNotificacao(Context contexto, int id) {
         String servicoNotificacao = Context.NOTIFICATION_SERVICE;
         NotificationManager gerenteNotificacao = (NotificationManager) contexto.getSystemService(servicoNotificacao);
         gerenteNotificacao.cancel(id);
