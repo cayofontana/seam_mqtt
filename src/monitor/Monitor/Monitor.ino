@@ -23,7 +23,7 @@ bool dadosEnviados;
 void setup() {
         Serial.begin(115200);
 
-        sensores.push_back(std::make_shared<Ultrassom>(5, 100, 15000, 4, 50, 20));
+        sensores.push_back(std::make_shared<Ultrassom>(14, 100, 15000, 12, 50, 20));
         sensores.push_back(std::make_shared<InfraVermelho>(10, 10, 15000));
 
         atuadores.push_back(Atuador(15));
