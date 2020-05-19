@@ -13,6 +13,7 @@ InfraVermelho::detectar(void) {
                 if (valorEntrada == HIGH) {
                         setIntervalo(getIntervalo());
                         objetoDetectado = true;
+                        Serial.println("Infravermelho Detectou!");
                 }
                 else
                         objetoDetectado = false;
