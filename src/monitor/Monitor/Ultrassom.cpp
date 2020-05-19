@@ -18,7 +18,6 @@ Ultrassom::detectar(void) {
                         setIntervalo(getIntervalo());
                         deteccoes = 0;
                         objetoDetectado = true;
-                        Serial.println("Ultrassom Detectou!");
                 }
                 else
                         objetoDetectado = false;
@@ -35,11 +34,8 @@ Ultrassom::executar(void) {
 
         distanciaEcoada = pulseIn(getPinoEntrada(), HIGH);
         distanciaEcoada *= velocidadeSom / 2;
-        if (distanciaEcoada < distancia) {
+        if (distanciaEcoada < distancia)
                 deteccoes++;
-                Serial.print("Detecções: ");
-                Serial.println(deteccoes);
-        }
         else
                 deteccoes = 0;
         
