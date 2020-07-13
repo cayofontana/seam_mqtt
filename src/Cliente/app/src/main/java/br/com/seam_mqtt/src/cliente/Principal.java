@@ -10,8 +10,8 @@ public class Principal extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Intent intencao = new Intent(this, MqttServico.class);
-        startService(intencao);
+//        Intent intencao = new Intent(this, MqttServico.class);
+//        startService(intencao);
 
 //        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
 //        StrictMode.setVmPolicy(builder.build());

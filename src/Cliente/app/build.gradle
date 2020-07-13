@@ -35,5 +35,4 @@ dependencies {
     compile('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
         exclude module: 'support-v4'
     }
-    implementation 'androidx.work:work-runtime:2.3.0'
 }

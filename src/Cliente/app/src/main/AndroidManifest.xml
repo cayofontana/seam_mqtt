@@ -25,6 +25,11 @@
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
+        <service
+            android:name=".servico.MqttServico"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
 
 </manifest>
